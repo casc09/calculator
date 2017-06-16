@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script src="js/adojavas.js"></script>
+    <script>
+
+        var db,rs;
+        var strConn="Provider=SQLOLEDB.1;Data Source=hds133773505.my3w.com;User ID=hds133773505;Password=840530na;Initial Catalog=hds133773505_db";
+        var isOpen=false;
+
+        //打开数据库
+        function openDatabase1()
+        {
+            db = new ActiveXObject("ADODB.Connection");
+            db.Open(strConn);
+            rs = new ActiveXObject("ADODB.Recordset");
+            alert("OPEN");
+        }
+
+        //关闭数据库
+        function closeDatabase()
+        {
+            if(isOpen)
+            {
+                rs.Close();
+            }
+            db.Close();
+        }
+
+        //新增数据
+        function insertRecord()
+        {
+            if(isOpen)
+                rs.Close();
+
+            var sql = "select companyname,username,userphone from userinfo where userphone ='" + document.getElementById("companyname").value + "'";
+            rs.Open(sql,db,adOpenStatic,adLockOptimistic,adCmdText);
+            isOpen = true;
+
+            if(rs.EOF)
+            {
+                rs.AddNew();
+                rs("companyname") = document.getElementById("companyname").value;
+                rs("username") = document.getElementById("contactname").value;
+                rs("userphone") = document.getElementById("contactphone").value;
+                rs.Update();
+            }
+
+
+        }
+
+        function clicked(){
+            //全局变量
+            if (document.getElementById("companyname").value!="" && document.getElementById("contactname").value!="" && document.getElementById("contactphone").value!="" ){
+                var sMobile =  document.getElementById("contactphone").value;
+                if(!(/(^1[3|4|5|7|8]\d{9}$)|(^09\d{8}$)/.test(sMobile))){
+                    alert("请填写正确的手机号");
+                    document.getElementById("contactphone").focus();
+                }else {
+//                    insertRecord();
+                    location.href = 'calculate.html';
+                }
+            }else{
+                alert("填写完整后方可进入");
+            }
+        }
+    </script>
+
+</head>
+
+<body onload="openDatabase1()" onunload="closeDatabase()">
+
+<div id="login">
+
+    <h2><span class=""></span>光伏收益计算器</h2>
+
+    <form action="javascript:void(0);" method="POST">
+
+        <fieldset>
+
+            <p><label for="email">公司名</label></p>
+            <p><input type="text" id="companyname" ></p>
+
+            <p><label for="email">联系人</label></p>
+            <p><input type="text" id="contactname" ></p>
+
+            <p><label for="email">联系电话</label></p>
+            <p><input type="text" id="contactphone" ></p>
+
+            <p><input type="submit" value="进入" onClick="clicked()"></p>
+
+        </fieldset>
+
+    </form>
+
+</div> <!-- end login -->
+
+</body>
+</html>

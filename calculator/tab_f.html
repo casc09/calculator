@@ -1,0 +1,358 @@
+<script type="text/javascript" xmlns="http://www.w3.org/1999/html">
+    initProvince();
+    initSelect();
+    initButton();
+</script>
+
+
+<!-- 引入weui -->
+<link rel="stylesheet" href="https://res.wx.qq.com/open/libs/weui/1.1.1/weui.min.css"/>
+
+<style>
+    .weui-cell{
+        height: 120px;
+        font-size: 34px;
+    }
+</style>
+<table id="tab_fenbu" width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="left fontsize">
+    <form action="#">
+
+                    <!--<div class="weui-cell__bd">-->
+                        <!--<div class="weui-cell__title">省份</div>-->
+                        <!--<select name="province" id="province" class="weui-cell weui-select" style="float: right"> </select>-->
+                    <!--</div>-->
+
+                    <div class="weui-cells">
+
+                        <div class="weui-cell weui-cell_select weui-cell_select-after" style="background-color: #0076a3;color: white" >
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label >省份</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <select name="province" id="province" class="weui-select" > </select>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell weui-cell_select weui-cell_select-after" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label >城市</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <select name="city" id="city" class="weui-select" ></select>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for="" >项目装机容量</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input id="zj" value="0" type="text" class="weui-input" style="width:80%;margin-left: 5%;float:left" name=""/>
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">KW</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%;float: left">
+                                <label for="" >光伏组件朝向</label>
+                            </div>
+                            <div class="weui-cell__bd" style="width: 70%;float: left;background-color:#E8E8E8" >
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0"  style="margin-left: 0%;font-size: 20px;" >
+                                    <tr >
+                                        <td align="center" valign="middle"><input type="radio" name="jd" value="0.9"> 东</td>
+                                        <td align="center" valign="middle"><input type="radio" name="jd" value="0.96"> 东南</td>
+                                        <td align="center" valign="middle"><input type="radio" name="jd" value="1" checked="true"> 南</td>
+                                        <td align="center" valign="middle"><input type="radio" name="jd" value="0.96"> 西南</td>
+                                        <td align="center" valign="middle"><input type="radio" name="jd" value="0.9"> 西</td>
+                                    </tr>
+                                </table>
+                                <div style="color:#666;margin-left: 5%">如果倾角为零度，那么朝向选择对发电量计算无影响</div>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for="" >安装倾角范围</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <table width="80%"  border="0" cellpadding="0" cellspacing="0" style="font-size: 20px">
+                                    <tr>
+                                        <td valign="middle">&nbsp;&nbsp;<input type="radio" name="jd2" value="1" style="width:15px" checked="true"><span style="color: white" id="jdz">推荐角度：</span></td>
+                                        <td align="center" valign="middle">&nbsp;&nbsp;<input type="radio" name="jd2" value="0" style="width:15px;color: white;"> 3°</td>
+
+                                    </tr>
+
+                                </table>
+                            </div>
+                        </div>
+
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  >项目总成本</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="sbcb" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">万元</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for="" >贷款比例</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="dkbl" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">%</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for="" >贷款利率</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="dklv" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">%</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  >贷款年限</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="dknx" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">年</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  >贷款类型</label>
+                            </div>
+                            <div class="weui-cell__bd">
+
+                                <table width="80%" border="0" cellpadding="0" cellspacing="0"  style="margin-left: 5%;font-size: 22px">
+                                    <tr>
+                                        <td align="center" valign="middle"><input  type="radio" name="hd_type" value="1" checked="true">等额本金  </td>
+                                        <td align="center" valign="middle"><input  type="radio" name="hd_type" value="2"/>等额本息</td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd"  style="width: 25%">
+                                <label for="" >用电单价<span style="color: yellow;font-size: 38px">*</span></label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="dj" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">元/度</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd"  style="width: 25%;font-size: 28px">
+                                <label for=""  >年运维成本(按项目总成本百分比计算)</span></label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="cb" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">%</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  >地方补贴</span></label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="part" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">元/度</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for="" >补贴年限</span></label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="btnx" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;color:black;float: left;margin-left: 2%" id="danwei">年</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  >自用比率</span></label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <input  id="zybl" value="0" type="number" class="weui-input" style="width:80%;margin-left: 5%;float:left">
+                                <span  style="width:13%;float: left;margin-left: 2%" id="danwei">%</span>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8" >
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  style="font-size: 30px" >全投资收益率</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <label id="irr"  style="margin-left: 5%">0.00%</label>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color: #0076a3;color: white">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  style="font-size: 30px">资本金收益率</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <label id="irr1"  style="margin-left: 5%">0.00%</label>
+                            </div>
+                        </div>
+
+                        <div class="weui-cell" style="background-color:#E8E8E8">
+                            <div class="weui-cell__hd" style="width: 25%">
+                                <label for=""  style="font-size: 30px">项目回收周期</label>
+                            </div>
+                            <div class="weui-cell__bd">
+                                <label id="hbzq1"  style="margin-left: 5%">年</label>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+
+        <!--<tr>-->
+            <!--<td height="32" align="right" valign="middle"><strong>项目装机容量</strong>：</td>-->
+            <!--<td align="left" valign="middle"> <div class="dzwz clear">-->
+                <!--<input id="zj" value="0" type="text" class="input_out" style="width:150px;" name="" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" />-->
+                <!--<span class="left" style="margin-left:12px;color:red" id="danwei">KW</span></div></td>-->
+        <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td  height="32" align="right" valign="middle"><strong>光伏组件朝向</strong>：</td>-->
+            <!--<td >-->
+
+                <!--<table width="240" border="0" cellpadding="0" cellspacing="0" class="left fontsize table3" style="margin:0 0 0 15px;">-->
+
+                    <!--<tr>-->
+
+                        <!--<td align="center" valign="middle"><input type="checkbox" name="jd" value="0.9"> 东</td>-->
+                        <!--<td align="center" valign="middle"><input type="checkbox" name="jd" value="0.96"> 东南</td>-->
+                        <!--<td align="center" valign="middle"><input type="checkbox" name="jd" value="1" checked="true"> 南</td>-->
+                        <!--<td align="center" valign="middle"><input type="checkbox" name="jd" value="0.96"> 西南</td>-->
+                        <!--<td align="center" valign="middle"><input type="checkbox" name="jd" value="0.9"> 西</td>-->
+                    <!--</tr>-->
+
+                <!--</table>-->
+                <!--<div style="float:left;color:#666;padding-left:15px;">如果倾角为零度，那么朝向选择对发电量计算无影响</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--&lt;!&ndash;<td height="32" align="right" valign="middle"><strong>安装倾角范围</strong>：</td>&ndash;&gt;-->
+            <!--<td ><div class="dzwz clear">-->
+                <!--&lt;!&ndash;<table width="200" height="20" border="0" cellpadding="0" cellspacing="0" class="left fontsize table3" >&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+                        <!--&lt;!&ndash;<td  valign="middle">&nbsp;&nbsp;<input type="checkbox" name="jd2" value="1" style="width:15px;" checked="true"><span id="jdz">推荐角度：</span></td>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<td align="center" valign="middle">&nbsp;&nbsp;<input type="checkbox" name="jd2" value="0" style="width:15px;"> 0°</td>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+                <!--&lt;!&ndash;</table>&ndash;&gt;-->
+                <!--<span class="left" style="margin-left:5px;"><strong>设备成本</strong>：</span>-->
+
+                <!--<input id="sbcb" type="text" value="0" class="input_out" style="width:50px" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/><span class="left" style="margin-left:2px;">（万元）</span></div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td align="right" height="32" valign="middle"><strong>贷款比例：</strong></td>-->
+            <!--<td align="left" valign="middle">-->
+                <!--<div class="dzwz clear">-->
+
+                    <!--<input id="dkbl" value="0" class="input_out" style="width:30px" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" type="text"><span class="left" style="margin-left:2px;">%</span>-->
+
+                    <!--<span class="left" style="margin-left:15px;"><strong>贷款利率</strong>：</span>-->
+                    <!--<input id="dklv"  style="width:50px;" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" type="text"><span class="left" style="margin-left:2px;">%</span>-->
+                    <!--<span class="left" style="margin-left:15px;"><strong>贷款年限</strong>：</span><input id="dknx" value="0" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'" type="text"><span class="left" style="margin-left:5px;">年</span>-->
+
+                <!--</div></td>-->
+        <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td align="right" height="32" valign="middle"><strong>贷款类型：</strong></td>-->
+            <!--<td align="left" valign="middle">-->
+                <!--<div class="dzwz clear"><input type="radio" name="hd_type" value="1" checked="true"/>等额本金<input type="radio" name="hd_type"value="2"/>等额本息</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td height="32" align="right" valign="middle"><strong><span style="color:red">＊</span>用电单价</strong>：</td>-->
+            <!--<td align="left" valign="middle">-->
+                <!--<div class="dzwz clear">-->
+                    <!--<input id="dj" value="0" type="text" class="input_out"  onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/>-->
+                    <!--<span class="left" style="margin-left:12px;">元/度</span>-->
+                    <!--<span class="left" style="margin-left:15px;"><strong>运     维成本</strong>：</span>-->
+                    <!--<input id="cb" value="0" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/>-->
+                    <!--<span class="left" style="margin-left:5px;">%</span><div id="butie">-->
+                    <!--<span class="left" style="margin-left:10px;"><strong>国家补贴</strong>：</span>-->
+                    <!--<span class="left" style="margin-left:5px;">0.42元/度</span></div>-->
+                <!--</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+
+        <!--<tr>-->
+            <!--<td height="32" align="right" valign="middle"><strong>地方补贴(省)</strong>：</td>-->
+            <!--<td align="left" valign="middle" >-->
+                <!--<div class="dzwz clear">-->
+                    <!--<span class="left"><input id="part" value="0" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/><span class="left" style="margin-left:12px;">元/度</span></span>-->
+                    <!--<div id="use">-->
+                        <!--<span class="left" style="margin-left:15px;"><strong>补贴年限</strong>：</span>-->
+                        <!--<input id="btnx" value="0" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/>-->
+                    <!--</div>-->
+                    <!--<div id="use">-->
+                        <!--<span class="left" style="margin-left:15px;"><strong>自用比例</strong>：</span>-->
+                        <!--<input id="zybl" value="100" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/>-->
+                        <!--<span class="left" style="margin-left:12px;">%</span></div>-->
+                <!--</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td height="32" align="right" valign="middle"><strong>地方补贴(市)</strong>：</td>-->
+            <!--<td align="left" valign="middle" >-->
+                <!--<div class="dzwz clear">-->
+                    <!--<span class="left"><input id="part1" value="0" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/><span class="left" style="margin-left:12px;">元/度</span></span>-->
+                    <!--<div id="use">-->
+                        <!--<span class="left" style="margin-left:15px;"><strong>补贴年限</strong>：</span>-->
+                        <!--<input id="btnx1" value="0" type="text" class="input_out" onfocus="this.className='input_on';this.onmouseout='';this.value=''" onblur="this.className='input_off';this.onmouseout=function(){this.className='input_out'};if(!value){value=defaultValue;}" onmousemove="this.className='input_move'" onmouseout="this.className='input_out'"/>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--<td height="32" style="margin-left: 20px" ><strong>预估收益:</strong><div>(25年平均)</div>-->
+                <!--<span id="ygsy" class="left" style="margin-left:15px;color:red;font-weight:bold;">0.00元/度</span>-->
+                <!--<span class="left" style="margin-left:25px;"><strong>售电总收入</strong>：</span>-->
+                <!--<span class="left" style="margin-left:12px;" id="totle">0</span><span>万元</span>-->
+            <!--</td>-->
+        <!--</tr>-->
+        <!--<tr>-->
+            <!--&lt;!&ndash;成本回收时间&ndash;&gt;-->
+         <!--<td height="32" style="text-align:center" ><strong style="margin-left:20px">收回成本需要<span id="hbzq" style="text-decoration:underline;">0</span>年</strong></td>-->
+            <!---->
+        <!--</tr>-->
+        <tr >
+            <td valign="middle" height="42" align="left" colspan="2" style="margin-top: 40px"><div style="margin:0"><strong id="alert" style="color:black;margin-left:20px;font-size: 20px;margin-top: 20px">备注：请如实填写电站所在地的相关数值，初始数值仅供参考，填写的用电电价为折后电价。计算公式中已包含各地脱硫上网电价。</strong></div></td>
+        </tr>
+
+        <div class="clear submitreset" style="text-align:center;">
+            <input type="button" value="提交" class="weui-btn weui-btn_primary" id="b-c" did="1" style="height: 108px;margin-top: 50px;font-size: 30px"/>
+            <!--<input type="reset" value="重置" class="reset" id="b-r" />-->
+        </div>
+
+    </form>
+</table>
+</table>

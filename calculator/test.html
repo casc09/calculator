@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+
+    <meta charset="utf-8">
+
+    <title>Login</title>
+
+    <link rel="stylesheet" href="css/login.css">
+
+    <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <style>
+        label{
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div id="login">
+
+    <h2><span class=""></span>光伏收益计算器</h2>
+
+    <form action="/asptest.asp" method="POST">
+
+        <fieldset>
+
+            <p><label for="email">公司名称</label></p>
+            <p><input type="text" name="companyname" ></p>
+
+            <p><label for="email">项目联系人</label></p>
+            <p><input type="text" name="contactname" ></p>
+
+            <p><label for="email">联系电话</label></p>
+            <p><input type="text" name="contactphone" ></p>
+
+            <p><input type="submit" value="进入" onClick="clicked()"></p>
+
+        </fieldset>
+
+    </form>
+
+</div> <!-- end login -->
+
+</body>
+</html>

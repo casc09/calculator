@@ -1,0 +1,365 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+
+    <title>储能投资回报计算器</title>
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
+
+    <!--[if IE 6]>
+    <script type="text/javascript" src="js/DD_belatedPNG_0.0.8a.js"></script>
+    <script type="text/javascript">
+        DD_belatedPNG.fix('.modelmain_title h1,.model_tipsab ul li');
+    </script>
+    <![endif]-->
+    <script type="text/javascript" src="http://db.solarzoom.com/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/containerAbs.js"></script>
+    <script type="text/javascript" src="http://db.solarzoom.com/js/highstock.js"></script>
+    <script type="text/javascript" src="js/pvinstall.js"></script>
+
+
+    <script type="text/javascript" src="js/loan-cal.js"></script>
+
+
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+            //$(".table1 tr:even").css("background-color","#eee");
+
+
+//            $("#data-table").css("display","inline");
+            $("#data-table").css("display","none");
+            $("#title").css("display","none");
+            $("#title1").css("display","none");
+            $(".table1 tr,.table2 td").mouseover(function (){
+                $(this).addClass("mml");
+            }).mouseout(function () {
+                $(this).removeClass("mml");
+            });
+            $("#radio1").attr("checked","checked");
+            $("#zj").val(1000);
+            //$(".table1 tr").hover(
+            //	function(){
+            //		$(".table1 tr td").addClass(".mml");
+            //	},
+            //	function(){
+            //		$(this).removeClass(".mml");
+            //	});
+            $("#station_type").load("containerTab_f.html");
+        });
+        $(function(){
+            $(".table1 tr td:last-child").css("color","red");
+        })
+
+
+        $(function(){
+            $("input[name='jd']").bind("click",function(){
+                if(tmp!=null){
+                    tmp.removeAttr("checked");
+                }
+                tmp = $(this);
+            });
+        }) ;
+//        function back(){
+//            location.reload();
+//        }
+    </script>
+    <style>
+        #dialog-form { font-size: 62.5%;}
+        #dialog-form label, #dialog-form input { display:block; }
+        #dialog-form input.text,#dialog-form texarea.text { margin-bottom:12px; width:95%; padding: .4em; }
+        # dialog-form fieldset { padding:0; border:0; margin-top:25px; }
+        # dialog-form h1 { font-size: 1.2em; margin: .6em 0; }
+        .ui-dialog .ui-state-error { padding: .3em; }
+        .validateTips { border: 1px solid transparent; padding: 0.3em; }
+    </style>
+</head>
+
+<body style="padding-bottom:75px; padding-top:30px;">
+<div class="modelwrap clear">
+    <div class="modelmain clear">
+
+        <!--<p  style="float:center;background-color: #00adee;">光伏电站投资回报计算器</p>-->
+
+        <div class="modelmainab clear">
+            <div style="width: 100%; text-align: center">
+                <img src="logo.PNG" >
+            </div>
+
+            <div class="clear modelmainabnr">
+                <div id="station_type"  style="float:center;width:100%;">
+
+                </div>
+
+            </div>
+
+
+
+            <div class="clear modelmainabnr" style="margin-top:20px;text-align:center;width: 100%;">
+
+                <p id="title1" style="text-align: center;font-size: 38px;background-color: #0076a3;color: white;margin-top: 40px">项目收益表 </p>
+                <table id="data-table"  border="0" align="center" cellpadding="0" cellspacing="0" class="table1" style="float:left;width: 100%;font-size: 20px">
+                    <tr style="width: 100%">
+                        <td  style="width: 12%" height="60" align="center" valign="middle" bgcolor="#adcdea"><strong>年</strong></td>
+                        <td  style="width: 20%" align="center" valign="middle" bgcolor="#adcdea"><strong>年充电量（万KWh)</strong></td>
+                        <td  style="width: 20%" align="center" valign="middle" bgcolor="#adcdea"><strong>电价差额收入(万元)</strong></td>
+                        <td  style="width: 20%" align="center" valign="middle" bgcolor="#adcdea"><strong>运维成本(万元)</strong></td>
+                        <td  style="width: 20%" align="center" valign="middle" bgcolor="#adcdea"><strong>年收益(万元)</strong></td>
+                        <td  style="width: 20%" align="center" valign="middle" bgcolor="#adcdea"><strong>还本付息(万元)</strong></td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">1</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">2</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">3</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">4</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">5</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">6</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">7</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">8</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">9</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">10</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">11</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">12</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">13</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">14</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">15</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">16</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">17</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">18</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">19</td>
+                        <td align="center" valign="middle">1,000,000</td>
+                        <td align="center" valign="middle">1,250,000 </td>
+                        <td align="center" valign="middle">125,000 </td>
+                        <td align="center" valign="middle">1,125,000</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">20</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">989,556</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">21</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">22</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">23</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">24</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">25</td>
+                        <td align="center" valign="middle">988,324</td>
+                        <td align="center" valign="middle">1,235,405</td>
+                        <td align="center" valign="middle">123,541</td>
+                        <td align="center" valign="middle">1,111,865</td>
+                        <td align="center" valign="middle" style="color:red">1,061,321</td>
+
+                    </tr>
+                    <tr>
+                        <td align="center" valign="middle" bgcolor="#ddefff">总计</td>
+                        <td align="center" valign="middle">-</td>
+                        <td align="center" valign="middle">-</td>
+                        <td align="center" valign="middle">-</td>
+                        <td align="center" valign="middle">-</td>
+                        <td align="center" valign="middle" style="color:red">-</td>
+
+                    </tr>
+
+                </table>
+            </div>
+
+            <div class="clear modelmainabnr" style="margin-top:40px;">
+
+                <p id="title" style="text-align: center;font-size: 38px;background-color: #0076a3;color: white;margin-top: 40px">储能设备充电量与现金流表 </p>
+                <div style="width:100%;height:400px;margin-top:0px;" id="chartDiv2">
+
+                </div>
+            </div>
+            <!--&lt;!&ndash;返回按钮&ndash;&gt;-->
+            <!--<div class="clear submitreset" style="text-align:center">-->
+                <!--<input type="button" value="返回" class="weui-btn weui-btn_primary" id="back" did="1" style="height: 78px;margin-top: 50px;font-size: 30px" onclick="back()"/>-->
+                <!--&lt;!&ndash;<input type="reset" value="重置" class="reset" id="b-r" />&ndash;&gt;-->
+            <!--</div>-->
+        </div>
+    </div>
+</div>
+</body>
+</html>
